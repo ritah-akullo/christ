@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+     <style>
+  
+
+.carousel-item {
+  flex: 0 0 100%; /* Each item takes up full width */
+  height: 100vh;
+}
+
+/* Optional: Add some styling to make it visually appealing */
+.carousel-item {
+  background-image: url('background_image.jpg'); /* Set background image */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-item .jumbotron {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
+  color: white; /* Text color */
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.carousel-item h1.display-4 {
+  font-size: 3rem; /* Adjust heading font size */
+}
+
+.carousel-item .lead {
+  font-size: 1.5rem; /* Adjust lead font size */
+}
+  
+        
+    </style>
+
+</head>
+<body>         
+          <div class="carousel-item" style="background-image: url('{% static 'images/landing.jpg' %}');">
+            <div class="jumbotron text-center mt-5">
+                <h1 class="display-4"><str>Welcome to DayStar Daycare</str></h1>
+                <p class="lead">Grow Up A Child</p>
+                <a href="/login/" class="btn btn-primary btn-lg" style="background-color: #FF9A8A;">Get Started</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

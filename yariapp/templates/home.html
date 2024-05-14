@@ -1,0 +1,170 @@
+<!-- home.html -->
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+     body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg,  #FF5CCB, #FFFFFF, #FF9A8A);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    color: #392A48;
+}
+
+
+.navbar {
+    background-color:   #FF9A8A;
+    color: #392A48;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color:#392A48;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color:#392A48;}
+    .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1001;
+}
+
+.dropdown-content a {
+    color: #392A48;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;}
+
+.dashboard-link {
+    display: inline-block; 
+    width: 300px; 
+    padding: 20px;
+    margin: 10px 10px 10px 0; 
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #392A48;
+    background-color: transparent;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-left: 20px;
+
+}
+ 
+
+.two{
+    display: inline-block; 
+    width: 300px; 
+    padding: 20px;
+    margin: 10px 10px 10px 0;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #392A48;
+    background-color: transparent;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-left: 120px;
+}
+.three {
+    display: inline-block; 
+    width: 300px; 
+    padding: 20px;
+    margin: 10px 10px 10px 0; 
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #392A48;
+    background-color: transparent;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-left: 130px;
+}
+
+.dashboard-link:hover {
+    box-shadow: 6px 6px 10px #e0e0e0,
+                -6px -6px 10px #ffffff;
+}
+
+
+ </style>
+    <div class="navbar">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" style="width: 50px; height: auto;border-radius: 10px;">
+      <ul class="nav-links">
+          <li><a href="{% url 'home' %}"><strong>Home</strong></a></li>
+          <li><a href="{% url 'baby_list' %}"><strong>Manage Babies</strong></a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn"><strong>Manage Arrivals</strong></a>
+            <div class="dropdown-content" style="background-color:   #FF9A8A;">
+                <a href="{% url 'arrival_list' %}"><strong>Arrivals</strong></a>
+                <a href="{%url 'depature_list' %}"><strong>Depature</strong></a>
+              </div>
+          <li><a href="{% url 'sitters_list' %}"><strong>Manage Sitters</strong></a></li>
+          <li class="dropdown">
+                <a href="#"><strong>Manage Payments</strong></a>
+          <div class="dropdown-content" style="background-color:   #FF9A8A;">
+              <a href="{% url 'sitters_payment_list' %}"><strong>Sitters</strong></a>
+              <a href="{%url 'payment_list' %}"><strong>Babies</strong></a>
+            </div>
+          <li><a href="{% url 'shop_list' %}"><strong>Manage Shop</strong></a></li>
+          <li><a href="{% url 'pro_list' %}"><strong>Manage Procuremen</strong>t</a></li>
+      </ul>
+    </div>
+    <div class="dashboard-link">
+        <a href="{% url 'onduty_list' %}" class="dashboard-link">
+            <img src="{% static 'images/people.svg' %}" alt="User Icon"> ON DUTY SITTERS
+        </a>
+    </div>
+    <div class="two">
+        <a href="{% url 'depature' %}" class="dashboard-link">
+        <img src="{% static 'images/user.svg' %}" alt="User Icon">ADD BABY DEPATURE
+        </a>
+    </div>
+    <div class="three">
+        <a href="{% url 'arrival' %}" class="dashboard-link">
+            <img src="{% static 'images/children.svg' %}" alt="User Icon" st> ADD BABY ARRIVAL
+        </a>
+    </div>
+    
+    <div>  
+        <footer class="bg-body-tertiary text-center">
+          <div>
+            <a class="text-body" href="https://mdbootstrap.com/"></a>
+            <a href="{% url 'logout' %}"></a>
+          </div>
+        </footer>
+      </div>
+{% endblock %}

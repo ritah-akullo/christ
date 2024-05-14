@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <title>List of Registered Sitters</title>
+   
+<style>
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg,  #FF5CCB, #FFFFFF, #FF9A8A);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #392A48;
+    height: 100vh;
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    border-radius: 10px;
+     overflow-x: hidden;
+    margin: 10px 0;
+    font-size: 16px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2) !important;
+   margin-left: 150px; 
+   margin-bottom: 50px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+thead {
+    background-color: transparent !important;
+    color: #392A48;
+}
+tbody {
+    background-color: transparent !important;
+}
+tr:nth-child(even) {
+    background-color: transparent;
+}
+td, th {
+    border-bottom: 1px solid #392A48;
+}
+tbody tr:last-child td {
+    border-bottom:none;
+}
+
+.navbar {
+    background-color:   #FF9A8A;
+    color: #392A48;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color:  #392A48;}
+    .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:   #FF9A8A;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1001;
+}
+
+.dropdown-content a {
+    color: #392A48;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;}
+
+</style>
+
+<div class="navbar">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" style="width: 50px; height: auto;border-radius: 10px;">
+  <ul class="nav-links">
+      <li><a href="{% url 'home' %}"><strong>Home</strong></a></li>
+      <li><a href="{% url 'baby_list' %}"><strong>Manage Babies</strong></a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn"><strong>Manage Arrivals</strong></a>
+        <div class="dropdown-content" style="background-color:   #FF9A8A;">
+            <a href="{% url 'arrival_list' %}"><strong>Arrivals</strong></a>
+            <a href="{%url 'depature_list' %}"><strong>Depature</strong></a>
+          </div>
+      <li><a href="{% url 'sitters_list' %}"><strong>Manage Sitters</strong></a></li>
+      <li class="dropdown">
+            <a href="#"><strong>Manage Payments</strong></a>
+      <div class="dropdown-content" style="background-color:   #FF9A8A;">
+          <a href="{% url 'sitters_payment_list' %}"><strong>Sitters</strong></a>
+          <a href="{%url 'payment_list' %}"><strong>Babies</strong></a>
+        </div>
+      <li><a href="{% url 'shop_list' %}"><strong>Manage Shop</strong></a></li>
+      <li><a href="{% url 'pro_list' %}"><strong>Manage Procuremen</strong>t</a></li>
+  </ul>
+  </div>
+
+</div>
+  
+    <div class="container">
+        <table class="table table-striped">
+            <table class="styled-table">
+              <h3 style="font-family: 'Times New Roman', Times, serif;padding-left: 400px;">Baby Payment List</h3>
+              <div class="add-sitter-button">
+                <a href="{% url 'payment' %}" class="btn btn-primary" style="background-color: #FF5CCB;">Add Payment</a>
+            </div>
+                <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Baby Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">paid_by</th>
+                    <th scope="col">date</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for cat in payment %}
+                    <tr>
+                      <td>{{ cat.id }}</td>
+                      <td>{{ cat.b_name}}</td>
+                      <td>{{ cat.amount }}</td>
+                      <td>{{ cat.currency}}</td>
+                      <td>{{ cat.paid_by }}</td>
+                      <td>{{ cat.date }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              
+    {% endblock %}
+            

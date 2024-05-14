@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <style>
+        body {
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+         background: linear-gradient(135deg,  #FF5CCB, #FFFFFF, #FF9A8A);
+         background-size: cover;
+         background-repeat: no-repeat;
+         color: #392A48;
+         height: 100vh;
+     }
+     
+     table {
+         width: 70%;
+         border-collapse: collapse;
+         border-radius: 10px;
+          overflow-x: hidden;
+         margin: 10px 0;
+         font-size: 16px;
+         box-shadow: 0 0 30px rgba(0, 0, 0, 0.2) !important;
+        margin-left: 150px; 
+        margin-bottom: 50px;
+     }
+     
+     th, td {
+         padding: 10px;
+         text-align: left;
+     }
+     thead {
+         background-color: transparent !important;
+         color: #392A48;
+     }
+     tbody {
+         background-color: transparent !important;
+     }
+     tr:nth-child(even) {
+         background-color: transparent;
+     }
+     td, th {
+         border-bottom: 1px solid #392A48;
+     }
+     tbody tr:last-child td {
+         border-bottom:none;
+     }
+     
+     .navbar {
+         background-color:   #FF9A8A;
+         color: #392A48;
+         padding: 10px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+     }
+     
+     .nav-links {
+         list-style-type: none;
+         display: flex;
+     }
+     
+     .nav-links li {
+         margin-right: 20px;
+     }
+     
+     .nav-links li {
+         margin-right: 20px;
+     }
+     
+     .nav-links li a {
+         text-decoration: none;
+         color:  #392A48;}
+         .dropdown {
+         position: relative;
+         display: inline-block;
+     }
+     
+     .dropdown-content {
+         display: none;
+         position: absolute;
+         background-color:   #FF9A8A;
+         min-width: 160px;
+         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+         z-index: 1001;
+     }
+     
+     .dropdown-content a {
+         color: #392A48;
+         padding: 12px 16px;
+         text-decoration: none;
+         display: block;
+     }
+     
+     .dropdown-content a:hover {
+         background-color: #f1f1f1;
+     }
+     
+     .dropdown:hover .dropdown-content {
+         display: block;}
+     
+     </style>
+     
+<div class="navbar">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" style="width: 50px; height: auto;border-radius: 10px;">
+  <ul class="nav-links">
+      <li><a href="{% url 'home' %}"><strong>Home</strong></a></li>
+      <li><a href="{% url 'baby_list' %}"><strong>Manage Babies</strong></a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn"><strong>Manage Arrivals</strong></a>
+        <div class="dropdown-content" style="background-color:   #FF9A8A;">
+            <a href="{% url 'arrival_list' %}"><strong>Arrivals</strong></a>
+            <a href="{%url 'depature_list' %}"><strong>Depature</strong></a>
+          </div>
+      <li><a href="{% url 'sitters_list' %}"><strong>Manage Sitters</strong></a></li>
+      <li class="dropdown">
+            <a href="#"><strong>Manage Payments</strong></a>
+      <div class="dropdown-content" style="background-color:   #FF9A8A;">
+          <a href="{% url 'sitters_payment_list' %}"><strong>Sitters</strong></a>
+          <a href="{%url 'payment_list' %}"><strong>Babies</strong></a>
+        </div>
+      <li><a href="{% url 'shop_list' %}"><strong>Manage Shop</strong></a></li>
+      <li><a href="{% url 'pro_list' %}"><strong>Manage Procuremen</strong>t</a></li>
+  </ul>
+  </div>
+
+    <div class="container">
+            <table class="styled-table">
+                <h3 style="font-family: 'Times New Roman', Times, serif;padding-left: 400px;">Doll Stall</h3>
+                <div class="add-sitter-button">
+                  <a href="{% url 'shop' %}" class="btn btn-primary" style="background-color: #FF5CCB;">Add Doll</a>
+              </div>
+                <thead>
+
+                  <tr> <th scope="col">Dolls</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Order Date</th>
+                    
+                </thead>
+        
+                  {% for food in shop %}
+                    <tr>
+                      
+                      <td>{{ food.doll_name }}</td>
+                      <td>{{ food.quality }}</td>
+                      <td>{{ food.brand}}</td>
+                      <td>{{ food.buying_price}}</td>
+                      <td>{{ food.selling_price}}</td>
+                      <td>{{ food.total_price}}</td>
+                       <td>
+                        {% if doll.is_sold %}
+                            <!-- Icon for sold -->
+                            <i class="fas fa-check-circle status-icon sold-icon"></i>
+                        {% else %}
+                            <!-- Icon for not sold -->
+                            <i class="fas fa-times-circle status-icon not-sold-icon"></i>
+                        {% endif %}
+                    </td>
+
+                    </tr>
+                   
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>       
+ {% endblock %}
