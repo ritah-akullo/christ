@@ -192,3 +192,43 @@ def baby_edit(request, id):
     else:
         form = AddBaby(instance=baby)
     return render(request, 'baby edit.html', {'form': form, 'baby': baby})
+
+def dollsell(request, pk):
+    # Fetch the Sellingform object with the provided pk, or return a 404 error if not found
+    doll = get_object_or_404(Sellingform, pk=pk)
+    
+    if request.method == 'POST':
+        # If the request method is POST, create a form instance with the POST data and the fetched doll object
+        form = AddSellingform(request.POST, instance=doll)
+        if form.is_valid():
+            # If the form is valid, save it to the database
+            form.save()
+            # Redirect to a success page or another appropriate URL
+            return redirect('selldoll_list')  # Replace 'success_url_name' with the actual URL name
+    else:
+        # If the request method is not POST, create a new form instance without any initial data
+        form = AddSellingform()
+    
+    # Render the 'sell_doll.html' template with the form object
+    return render(request, 'sell_doll.html', {'form': form})
+
+def dollsell_without_pk(request):
+    # Assuming you want to render a template when accessing sell_doll without a pk
+    return render(request, 'sell_doll.html')
+
+def proo(request):
+    if request.method == 'POST':
+        form=AddSellingform(request.POST)
+        if form.is_valid():
+            form.save()
+            print(form)
+        return redirect('selldoll_list')
+    else:
+        form = AddSellingform()
+        return render(request, 'sell_doll.html',{'form':form})
+
+
+
+def dollsell_list(request):
+    selldoll = Sellingform.objects.all()
+    return render(request, 'selldoll_list.html', {'selldoll': selldoll})

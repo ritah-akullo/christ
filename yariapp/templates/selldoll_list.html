@@ -127,41 +127,34 @@
 
     <div class="container">
             <table class="styled-table">
-                <h3 style="font-family: 'Times New Roman', Times, serif;padding-left: 400px;">Doll Stall</h3>
+                <h3 style="font-family: 'Times New Roman', Times, serif;padding-left: 400px;">Sold Dolls</h3>
                 <div class="add-sitter-button">
-                  <a href="{% url 'shop' %}" class="btn btn-primary" style="background-color: #FF5CCB;">Add Doll</a>
-                </div>
-                <div class="add-sitter-button">
-                    <a href="{% url 'selldoll_list' %}" class="btn btn-primary" style="background-color: #FF5CCB;">Bought Dolls</a>
-                  </div>
+                  <a href="{% url 'sell_doll' %}" class="btn btn-primary" style="background-color: #FF5CCB;">Add Bought Doll</a>
+              </div>
                 <thead>
 
                   <tr> <th scope="col">Dolls</th>
-                    <th scope="col">Quality</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Buying Price</th>
                     <th scope="col">Selling Price</th>
-                    <th scope="col">Total Price</th>
-                    <th scope="col">Order Date</th>
+                    <th scope="col">Sold Date</th>
+                    <th scope="col">Baby Issued To</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Price</th>
+    
                     <th scope="col">Status</th>
-                    
-                </thead>
-
-                  {% for food in shop %}
+                  {% for sell in selldoll %}
                     <tr>
                       
-                      <td>{{ food.doll_name }}</td>
-                      <td>{{ food.quality }}</td>
-                      <td>{{ food.brand}}</td>
-                      <td>{{ food.buying_price}}</td>
-                      <td>{{ food.selling_price}}</td>
-                      <td>{{ food.total_price}}</td>
-                      <td>{{ food.order_date}}</td>
+                      <td>{{ sell.doll }}</td>
+                      <td>{{ sell.selling_price }}</td>
+                      <td>{{ sell.sold_date}}</td>
+                      <td>{{ sell.issued_to}}</td>
+                      <td>{{ sell.quantity}}</td>
+                      <td>{{ sell.unit_price}}</td>
                        <td>
                         {% if doll.is_sold %}
-                        <img src="{% static 'images/sold.png' %}" alt="Sold Icon" style="width: 20px; height: auto;">
+                        
                     {% else %}
-                        <img src="{% static 'images/instock.png' %}" alt="In Stock Icon" style="width: 20px; height: auto;">
+                    <img src="{% static 'images/sold.png' %}" alt="Sold Icon" style="width: 20px; height: auto;">
                     {% endif %}
                     
                     </td>

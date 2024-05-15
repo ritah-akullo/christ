@@ -50,3 +50,7 @@ class AddProform(forms.ModelForm):
         model = Proform
         fields = '__all__'
 
+class AddSellingform(ModelForm):
+    class Meta:
+        model = Sellingform
+        fields = '__all__'

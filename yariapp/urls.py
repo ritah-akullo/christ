@@ -18,8 +18,9 @@ urlpatterns = [
     path('procurement/', views.pro, name='procurement'),
     path('shop/', views.dollshop, name='shop.html'),
     path('shop_list/', views.shop_list, name='shop_list'),
-    
-
+    path('sell_doll/', views.proo, name='sell_doll'),
+    path('sell_doll/<int:pk>/', views.dollsell, name='sell_doll'),
+    path('selldoll_list/', views.dollsell_list, name='selldoll_list'),
 
 
     path('baby_edit/<int:id>/', views.baby_edit, name='baby_edit'),

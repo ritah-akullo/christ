@@ -72,13 +72,14 @@ class Payform(models.Model):
     date= models.DateField(default=timezone.now)
     baby_count = models.IntegerField(null=True, )
     total_amount = models.IntegerField(null=True,)
-    def __int__(self):
-        return self.sitter_name
-    
+   
     def total_amount(self):
         total= self.amount * self.baby_count
         return int(total)
 
+    def __int__(self):
+        return self.sitter_name
+    
 class Babyform(models.Model):
     c_stay = models.ForeignKey(CategoryStay,on_delete=models.CASCADE, null=True)
     b_name = models.CharField(max_length=100,null=True)
@@ -111,15 +112,20 @@ class Depatureform(models.Model):
 
                 
 class Shopform(models.Model):
-    b_name = models.CharField(max_length=50,null=True)
     doll_name = models.CharField(max_length=50,null=True)
     quality = models.CharField(max_length=50,null=True)
     brand = models.CharField(max_length=50,null=True)
     buying_price = models.CharField(max_length=50,null=True)
     selling_price = models.CharField(max_length=50,null=True)
     total_price = models.CharField(max_length=50,null=True)
+    order_date = models.DateField(null=True,default=timezone.now)
+
+    def total(self):
+        total= self.buying_price * self.quantity
+        return int(total)
+    
     def __str__(self):
-        return self.b_name
+        return self.doll_name
 
 
 
@@ -137,3 +143,15 @@ class Proform(models.Model):
         def __str__(self):
             return self.item_name
 
+class Sellingform(models.Model):
+    doll = models.ForeignKey(Shopform, on_delete=models.CASCADE)
+    selling_price = models.DecimalField(max_digits=10, decimal_places=2)
+    sold_date = models.DateField(auto_now_add=True)
+    issued_to = models.ForeignKey(Babyform, on_delete=models.CASCADE, null=True, blank=True)
+    quantity = models.IntegerField(default=0, null=True,)
+    unit_price = models.IntegerField(default=0, null=True,)
+    sold_quantity = models.IntegerField(default=0, null=True,)
+    
+    def gettotal_amount(self):
+      total=self.quantity*self.unit_price
+      return int(total)
