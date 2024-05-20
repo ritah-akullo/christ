@@ -22,7 +22,7 @@ class Sittersform(models.Model):
     location = models.CharField(max_length=50, null =True)
     next_of_kin = models.CharField(max_length=200,null=True)
     level_of_education = models.CharField(max_length=50 ,null=True)
-    date_of_birth = models.DateTimeField(default=timezone.now)
+    date_of_birth =models.DateField(auto_now_add=True)
     
     def _str_(self):
         return self.c_name
@@ -32,7 +32,7 @@ class Arrivalform(models.Model):
     b_name = models.CharField(max_length=50,null=True)
     parent_name = models.CharField(max_length=50,null=True)
     timeInDay =  models.DateTimeField(default=timezone.now)
-    date = models.DateField(default=timezone.now)
+    date =  models.DateField(auto_now_add=True)
     brought_by = models.CharField(max_length=50,null=True)
     
     def __str__(self):
@@ -54,7 +54,7 @@ class Paymentform(models.Model):
     amount = models.IntegerField(null=True, blank=True)
     currency = models.CharField(max_length=10, default='Ugx',null=True,)
     paid_by=  models.CharField(max_length=10,null=True,)
-    date = models.DateField(default=timezone.now)
+    date = models.DateField(auto_now_add=True)
     def __int__(self):
         return self.currency
     
@@ -69,7 +69,7 @@ class Payform(models.Model):
     s_name= models.CharField(max_length=50,null=True)
     amount = models.IntegerField(default=3000,)
     currency = models.CharField(max_length=10, default='Ugx')
-    date= models.DateField(default=timezone.now)
+    date=  models.DateField(auto_now_add=True)
     baby_count = models.IntegerField(null=True, )
     total_amount = models.IntegerField(null=True,)
    
@@ -102,7 +102,7 @@ class Depatureform(models.Model):
     b_name = models.CharField(max_length=50,null=True)
     parent_name = models.CharField(max_length=50,null=True)
     timeOutDay = models.DateTimeField(default=timezone.now) 
-    date = models.DateField(default=timezone.now)
+    date = models.DateField(auto_now_add=True)
     person_pickingup = models.CharField(max_length=50,null=True)
     
     def __str__(self):
@@ -118,7 +118,7 @@ class Shopform(models.Model):
     buying_price = models.CharField(max_length=50,null=True)
     selling_price = models.CharField(max_length=50,null=True)
     total_price = models.CharField(max_length=50,null=True)
-    order_date = models.DateField(null=True,default=timezone.now)
+    order_date = models.DateField(auto_now_add=True)
 
     def total(self):
         total= self.buying_price * self.quantity

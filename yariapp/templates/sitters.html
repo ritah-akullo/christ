@@ -116,18 +116,18 @@ color: #392A48;
           <a href="{%url 'payment_list' %}"><strong>Babies</strong></a>
         </div>
       <li><a href="{% url 'shop_list' %}"><strong>Manage Shop</strong></a></li>
-      <li><a href="{% url 'pro_list' %}"><strong>Manage Procuremen</strong>t</a></li>
+      <li><a href="{% url 'pro_list' %}"><strong>Manage Procurement</strong></a></li>
   </ul>
 </div>
 <div class ="container">
     <h3 style="text-align: center;"> 
-        <strong>Registration Form</strong>
+        <strong>Sitter Registration Form</strong>
     </h3>
     <form method="post" div class="sitter">
         
     {% csrf_token %}
     {{ form | crispy }}
-    <button type="submit" css_class="btn btn-primary" style=" width: 200%;padding:10px; border:none;background-color: #392A48;border-radius: 5px; color: #fff;cursor: pointer;text-align: center;">Submit</button>
+    <button type="submit" css_class="btn btn-primary" style=" width: 100%;padding:10px; border:none;background-color: #392A48;border-radius: 5px; color: #fff;cursor: pointer;text-align: center;height: 50px;margin-top: 30px;">Submit</button>
 </form>   
 </div>
 

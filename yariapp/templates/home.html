@@ -118,7 +118,14 @@
     box-shadow: 6px 6px 10px #e0e0e0,
                 -6px -6px 10px #ffffff;
 }
-
+footer{position:fixed;
+  left: 0;
+  bottom: 0;
+  padding-top: 30px;
+  width: 100%;
+  background-color:  #FF9A8A;
+  color:#392A48;
+  text-align: center;}
 
  </style>
     <div class="navbar">
@@ -140,7 +147,7 @@
               <a href="{%url 'payment_list' %}"><strong>Babies</strong></a>
             </div>
           <li><a href="{% url 'shop_list' %}"><strong>Manage Shop</strong></a></li>
-          <li><a href="{% url 'pro_list' %}"><strong>Manage Procuremen</strong>t</a></li>
+          <li><a href="{% url 'pro_list' %}"><strong>Manage Procurement</strong></a></li>
       </ul>
     </div>
     <div class="dashboard-link">
@@ -161,12 +168,13 @@
    <div>
     <img src="{% static 'images/arrow.svg' %}" alt="User Icon" width="30" height="30"><strong> Our Daily Records</strong>
    </div>
-    <div>  
-        <footer class="bg-body-tertiary text-center">
-          <div>
-            <a class="text-body" href="https://mdbootstrap.com/"></a>
-            <a href="{% url 'logout' %}"></a>
-          </div>
-        </footer>
+   <div>  
+    <footer class="bg-body-tertiary text-center">
+      <div>
+        © 2024 Copyright:
+        <a class="text-body" href=>Akullo.com</a>
+        <a href="{% url 'logout' %}">Logout</a>
       </div>
+    </footer>
+  </div>
 {% endblock %}

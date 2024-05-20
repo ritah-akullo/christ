@@ -5,22 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>landing page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 
-     <style>
+     
   
-
+<style>
 .carousel-item {
-  flex: 0 0 100%; /* Each item takes up full width */
+  flex: 0 0 100%;
   height: 100vh;
 }
 
-/* Optional: Add some styling to make it visually appealing */
+
 .carousel-item {
-  background-image: url('background_image.jpg'); /* Set background image */
+  background-image: url('background_image.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -29,38 +29,73 @@
 }
 
 .carousel-item .jumbotron {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
-  color: white; /* Text color */
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: white; 
   padding: 30px;
   border-radius: 10px;
 }
 
 .carousel-item h1.display-4 {
-  font-size: 3rem; /* Adjust heading font size */
+  font-size: 3rem;
 }
 
 .carousel-item .lead {
-  font-size: 1.5rem; /* Adjust lead font size */
+  font-size: 1.5rem; 
 }
-  
-        
-    </style>
+.header {
+background-color:  #FF9A8A;
+padding: 0px;
+text-align: center;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 9999;
+}
+.header img {
+width: 50px; 
+height: auto;          
+}
+.header h1 {
+  margin-top: 0;
+  color: #333; 
+  width: 100%;          
+}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    width: 100%;
+    background-color:  #FF9A8A;
+    color:#392A48;
+    text-align: center;
+}
 
-</head>
-<body>         
-          <div class="carousel-item" style="background-image: url('{% static 'images/landing.jpg' %}');">
+</style> 
+<div class="header">
+  <img src="{% static 'images/logo.png'  %}" alt="Logo" style="border-radius: 50px;">
+  <h1 style="color: #392A48;">DayStar Daycare</h1>
+</div>   
+  <div class="carousel-item" style="background-image: url('{% static 'images/landing.jpg' %}');">
             <div class="jumbotron text-center mt-5">
                 <h1 class="display-4"><str>Welcome to DayStar Daycare</str></h1>
                 <p class="lead">Grow Up A Child</p>
                 <a href="/login/" class="btn btn-primary btn-lg" style="background-color: #FF9A8A;">Get Started</a>
             </div>
-          </div>
-        </div>
+  </div>
+</div>
+<div>  
+  <footer class="bg-body-tertiary text-center">
+    <div>
+      © 2024 Copyright:
+      <a class="text-body">Akullo.com</a>
     </div>
+  </footer>
+</div>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-</body>
-</html>

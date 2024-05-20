@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <style>
-   body {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -28,17 +28,17 @@
             left: 0;
             right: 0;
             z-index: 9999;
-        }
-        .header img {
+}
+.header img {
             width: 50px; 
             height: auto;
         }
-        .header h1 {
+.header h1 {
             margin-top: 0;
             color: #333; 
             width: 100%;
-        }
-        .login-container {
+}
+.login-container {
         max-width: 300px;
         margin: 20px auto;
         padding: 10px;
@@ -47,25 +47,25 @@
         box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
         margin-top: 150px;
         
-    }
-        .login-container h2 {
+}
+.login-container h2 {
             text-align: center;
-        }
-        .form-group {
+}
+.form-group {
             margin-bottom: 15px;
-        }
-        .form-group label {
+}
+.form-group label {
             display: block;
             margin-bottom: 5px;
-        }
-        .form-group input {
+}
+.form-group input {
             width: 90%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: transparent;
-        }
-        .form-group button {
+}
+.form-group button {
             width: 95%;
             padding: 10px;
             background-color:#392A48;
@@ -73,7 +73,7 @@
             border-radius: 3px;
             color: #fff;
             cursor: pointer;
-        }
+}
         
 footer {
     position: fixed;
@@ -114,12 +114,15 @@ footer {
         </div>
     </form>
 </div>
- 
-<footer class="bg-body-tertiary text-center" style=" background-color:   #FF9A8A; height: 50px; text-align: center; padding-top: 20px;">
-    <div class="">
+<div>  
+    <footer class="bg-body-tertiary text-center">
+      <div>
         © 2024 Copyright:
-        <a class="text-body" href="https://mdbootstrap.com/">Akullo.com</a><br>
-    </div>
-</footer>
+        <a class="text-body">Akullo.com</a>
+        
+        <a href="{% url 'logout' %}">Logout</a>
+      </div>
+    </footer>
+  </div>
 
 {% endblock %}

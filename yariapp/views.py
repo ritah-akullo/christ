@@ -23,7 +23,7 @@ def landing_page(request):
 def home_page(request):
     return render(request, 'home.html')
 
-
+@login_required
 def onduty(request):
     if request.method == 'POST':
         form=AddDuty(request.POST)
@@ -35,6 +35,7 @@ def onduty(request):
         form = AddDuty()
     return render(request, 'onduty.html', {'form': form})
 
+@login_required
 def onduty_list(request):
     s_onduty =OnDutyform.objects.all()
     return render(request, 'onduty_list.html', {'s_onduty': s_onduty})
@@ -45,7 +46,7 @@ def onduty_list(request):
 # def categorystay(request):
 #     categorystayform = AddCategoryStay()  
 #     return render(request, 'categorystay.html', {'categorystayform': categorystayform}) 
-
+@login_required
 def sitters(request):
     if request.method == 'POST':
         form=AddSitter(request.POST)
@@ -57,12 +58,13 @@ def sitters(request):
        form = AddSitter()
     return render(request, 'sitters.html', {'form': form})
 
+@login_required
 def sitters_list(request):
    sitters =Sittersform.objects.all() 
    return render(request, 'sitters_list.html', {'sitters': sitters})
     
    
-
+@login_required
 def baby(request):
    if request.method == 'POST':
        form=AddBaby(request.POST)
@@ -74,10 +76,12 @@ def baby(request):
       form = AddBaby()
    return render (request, 'baby.html', {'form':form})
 
+@login_required
 def baby_list(request):
     babies = Babyform.objects.all() 
     return render(request, 'baby_list.html', {'babies': babies})
 
+@login_required
 def depature(request):
     if request.method == 'POST':
         form=AddDepature(request.POST)
@@ -89,11 +93,11 @@ def depature(request):
         form = AddDepature()
     return render(request, 'depature.html',{'form':form})
 
-
+@login_required
 def baby_page(request):
     return render(request, 'baby.html')
 
-
+@login_required
 def arrival(request):
     if request.method == 'POST':
         form=AddArrival(request.POST)
@@ -105,14 +109,17 @@ def arrival(request):
         form = AddArrival()
     return render(request, 'arrival.html',{'form':form})
 
+@login_required
 def arrival_list(request):
     arrivals = Arrivalform.objects.all()
     return render(request, 'arrival_list.html',{'arrivals':arrivals})
 
+@login_required
 def depature_list(request):
     depatures = Depatureform.objects.all()
     return render(request, 'depature_list.html',{'depatures':depatures})
 
+@login_required
 def payment(request):
     if request.method == 'POST':
         form=AddPayment(request.POST)
@@ -124,30 +131,32 @@ def payment(request):
         form = AddPayment()
     return render(request, 'payment.html',{'form':form})
 
+@login_required
 def payment_list(request):
     payment = Paymentform.objects.all()
     return render(request, 'payment_list.html',{'payment':payment})
-
+@login_required
 def payment_page(request):
     return render(request, 'payment.html')
 
-
+@login_required
 def payform(request):
     if request.method == 'POST':
         form=AddPayform(request.POST)
         if form.is_valid():
             form.save()
             print(form)
-        return redirect('s_payment_list')
+        return redirect('sitters_payment_list')
     else:
         form = AddPayform()
     return render(request, 'pay.html',{'form':form})
 
+@login_required
 def sitters_payment_list(request):
     s_payment_list = Payform.objects.all()
     return render(request,'s_payment_list.html',{'s_payment_list':s_payment_list})
 
-
+@login_required
 def dollshop(request):
     if request.method == 'POST':
         form = AddShop(request.POST)
@@ -158,11 +167,12 @@ def dollshop(request):
         form = AddShop()
     return render(request, 'shop.html', {'form': form})
 
-
+@login_required
 def shop_list(request):
     shop = Shopform.objects.all()
     return render(request,'shop_list.html',{'shop':shop})
 
+@login_required
 def pro(request):
     if request.method == 'POST':
         form=AddProform(request.POST)
@@ -174,14 +184,14 @@ def pro(request):
         form = AddProform()
         return render(request, 'procurement.html',{'form':form})
 
-
+@login_required
 def pro_list(request):
     pro = Proform.objects.all()
     return render(request,'pro_list.html',{'pro':pro})
 
 
 
-
+@login_required
 def baby_edit(request, id):  
     baby = get_object_or_404(Babyform, id=id)  
     if request.method == 'POST':
@@ -215,7 +225,7 @@ def dollsell(request, pk):
 def dollsell_without_pk(request):
     # Assuming you want to render a template when accessing sell_doll without a pk
     return render(request, 'sell_doll.html')
-
+@login_required
 def proo(request):
     if request.method == 'POST':
         form=AddSellingform(request.POST)
@@ -228,7 +238,7 @@ def proo(request):
         return render(request, 'sell_doll.html',{'form':form})
 
 
-
+@login_required
 def dollsell_list(request):
     selldoll = Sellingform.objects.all()
     return render(request, 'selldoll_list.html', {'selldoll': selldoll})
